@@ -2,13 +2,13 @@
 <body>
 <h1>Calendar</h1>
 
-<p>The current time and date is (YYYY/MM/DD):<br/>
-<span id="year">0</span>/<span id="month">0</span>/<span id="day">0</span></p>
-<p><span id="daysElapsed">0</span> days have elapsed this year.</p>
+<h2>The current time and date is:</h2>
+<p>year <span id="year">0</span>, month <span id="month">0</span>, day <span id="day">0</span></p>
+<p><span id="daysElapsed">0</span> days have elapsed since the beginning of this year.</p>
+<p><span id="season"></span> is the current season.</p>
 
-<p>Debug info:<br/>
-Milliseconds since Jehvnar Reckoning Epoch: <span id="jehvnarEpochMillis"></span><br/>
-Milliseconds elapsed since beginning of Jehvnar Reckoning year: <span id="jehvnarReckoningYearMillis"></span></p>
+<h2>Info:</h2>
+<p>There are 72 days in a Jehvnar year. The year is divided into 4 "months", totalling 18 days each.</p>
 
 <script>
 const jehvnarEpoch = 1590883200000; // The Jehvnar epoch
@@ -20,16 +20,23 @@ let jehvnarTimeNow; // The Jehvnar time now in milliseconds
 
 let timeOffset = 0; // Ingame time offset in milliseconds (probably gonna be used later)
 
+let getTodayUTC = () => {
+	let todayDate = new Date().getUTCDate(); // Get today's date
+	let todayMonth = new Date().getUTCMonth() + 1; // Get today's month
+	let todayYear = new Date().getUTCFullYear(); // Get today's year
+	let today = new Date(String(todayYear) + '-' + String(todayMonth).padStart(2, '0') + '-' + String(todayDate).padStart(2, '0') + 'T00:00:00-00:00'); // Get today when it started at GMT 00:00
+	
+	return today;
+}
+
 // Format Jehvnar Reckoning year
 let getYear = (jehvnarTime) => {
 	return Math.round(jehvnarTime / 86400000);
 }
 
 let getDaysElapsed = (jehvnarTime) => {	
-	let todayDate = new Date().getUTCDate(); // Get today's date
-	let todayMonth = new Date().getUTCMonth() + 1; // Get today's month
-	let todayYear = new Date().getUTCFullYear(); // Get today's year
-	let today = new Date(String(todayYear) + '-' + String(todayMonth).padStart(2, '0') + '-' + String(todayDate).padStart(2, '0') + 'T00:00:00-00:00'); // Get today when it started at GMT 00:00
+	let today = getTodayUTC();
+	
 	let timeElapsedForToday = unixTimeNow - today.getTime();
 	
 	timeElapsedForToday = timeElapsedForToday / 1200000 // to minecraft days
@@ -40,19 +47,23 @@ let getDaysElapsed = (jehvnarTime) => {
 
 // Format month based on 4-month system
 let getMonth = (jehvnarTime) => {
-	//todo
-	
-	let todayDate = new Date().getUTCDate(); // Get today's date
-	let todayMonth = new Date().getUTCMonth() + 1; // Get today's month
-	let todayYear = new Date().getUTCFullYear(); // Get today's year
-	let today = new Date(String(todayYear) + '-' + String(todayMonth).padStart(2, '0') + '-' + String(todayDate).padStart(2, '0') + 'T00:00:00-00:00'); // Get today when it started at GMT 00:00
+	let today = getTodayUTC();
 	
 	let timeElapsedForToday = unixTimeNow - today.getTime();
 	
 	timeElapsedForToday = timeElapsedForToday / 60000 // to minutes
 	timeElapsedForToday = timeElapsedForToday / 20 // to minecraft days
 	
-	return Math.round(timeElapsedForToday); // todo only!!!
+	let daysElapsedThisYear = timeElapsedForToday;
+	let month;
+	
+	// basically 
+	if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 18) { month = 1; }
+	if (daysElapsedThisYear > 18 && daysElapsedThisYear <= 36) { month = 2; }
+	if (daysElapsedThisYear > 36 && daysElapsedThisYear <= 54) { month = 3; }
+	if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 72) { month = 4; }
+	
+	return month;
 }
 
 
@@ -64,8 +75,7 @@ let updateTime = () => {
 	// Update timestamps
 	document.getElementById('year').innerHTML = getYear(jehvnarTimeNow);
 	document.getElementById('daysElapsed').innerHTML = getDaysElapsed(jehvnarTimeNow);
-	document.getElementById('jehvnarEpochMillis').innerHTML = jehvnarTimeNow;
-	document.getElementById('jehvnarReckoningYearMillis').innerHTML = getMonth(jehvnarTimeNow);
+	document.getElementById('month').innerHTML = getMonth(jehvnarTimeNow);
 }
 setInterval(updateTime, 1); // Update the time
 </script>
