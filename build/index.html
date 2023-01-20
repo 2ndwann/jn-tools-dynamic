@@ -36,7 +36,7 @@
 				</select>
 			</div>
 			
-			<h3>The current time and date is:</h3>
+			<h3>The current date is:</h3>
 			<p class="display-1">Year <span id="year">0</span> <span id="optionalContent"><span style="font-size:30px">month <span id="month">0</span>, day <span id="day">0</span></span></span></p>
 			<p><span id="daysElapsed" class="bold">0</span> days have elapsed since the beginning of this year.<br/>
 			<span id="season" class="bold"></span> is the current season.</p>
@@ -63,8 +63,8 @@
 
 <script>
 const jehvnarEpoch = 1590883200000; // The Jehvnar epoch
-const monthsInAYear = 4; // How many months there are in a year (unused var)
 const daysInAYear = 72; // How many days are in a year (unused var)
+let monthsInAYear = 4; // How many months there are in a year
 
 let unixTimeNow; // The unix millis time now since Unix epoch
 let jehvnarTimeNow; // The Jehvnar time now in milliseconds
@@ -109,10 +109,16 @@ let getMonth = (jehvnarTime) => {
 	let month;
 	
 	// basically 
-	if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 18) { month = 1; }
-	if (daysElapsedThisYear > 18 && daysElapsedThisYear <= 36) { month = 2; }
-	if (daysElapsedThisYear > 36 && daysElapsedThisYear <= 54) { month = 3; }
-	if (daysElapsedThisYear > 54 && daysElapsedThisYear <= 72) { month = 4; }
+	if (monthsInAYear == 4) { // For 4-month calendar
+		if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 18) { month = 1; }
+		if (daysElapsedThisYear > 18 && daysElapsedThisYear <= 36) { month = 2; }
+		if (daysElapsedThisYear > 36 && daysElapsedThisYear <= 54) { month = 3; }
+		if (daysElapsedThisYear > 54 && daysElapsedThisYear <= 72) { month = 4; }
+	} else if (monthsInAYear == 3) {
+		if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 24) { month = 1; }
+		if (daysElapsedThisYear > 24 && daysElapsedThisYear <= 48) { month = 2; }
+		if (daysElapsedThisYear > 48 && daysElapsedThisYear <= 72) { month = 3; }
+	}
 	
 	return month;
 }
@@ -131,7 +137,7 @@ let getDay = (jehvnarTime) => {
 	
 	// get how many days elapsed since this month
 	let day;
-	day = 18 - ((month * 18) - daysElapsedThisYear);
+	day = (daysInAYear / monthsInAYear) - ((month * (daysInAYear / monthsInAYear)) - daysElapsedThisYear);
 	
 	return Math.round(day);
 }
@@ -147,7 +153,7 @@ let getSeason = () => {
 	let daysElapsedThisYear = timeElapsedForToday;
 	let month;
 	
-	// basically 
+	// (Fixed to 4-month year due to season derivation purposes)
 	if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 18) { month = 1; }
 	if (daysElapsedThisYear > 18 && daysElapsedThisYear <= 36) { month = 2; }
 	if (daysElapsedThisYear > 36 && daysElapsedThisYear <= 54) { month = 3; }
@@ -182,8 +188,12 @@ setInterval(updateTime, 1); // Update the time
 $('#calendarSystem').change(function() {
     if ($(this).val() === '4-month') { // if 4 month system
         $('#optionalContent').show();
+		monthsInAYear = 4; // Change the months of the year
+		
     } else if ($(this).val() === '3-month') { // if 3 month system
 		$('#optionalContent').show();
+		monthsInAYear = 3; // Change the months of the year
+		
 	} else if ($(this).val() === 'monthless') { // if monthless system
 		$('#optionalContent').hide();
 	} 
