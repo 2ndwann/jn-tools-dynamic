@@ -31,27 +31,27 @@
 				<div class="col-sm-6">
 					<div class="form-group">
 						<!-- Language selection -->
-						<select class="form-control" id="sel1">
+						<select class="form-control" id="input">
 							<option value="commonspeak-plain" selected="selected">Commonspeak (plain)</option>
 							<option value="commonspeak-weskethian">Commonspeak (Weskethian)</option>
 							<option value="minamic">Minamic</option>
 						</select>
 						
 						<!-- Translation input -->
-						<textarea class="form-control" placeholder="Enter text here" rows="15" id="input"></textarea>
+						<textarea class="form-control" placeholder="Enter text here" rows="15" id="input-text"></textarea>
 					</div>
 				</div>
 				<div class="col-sm-6">
 						<!-- Language selection -->
 						<div class="form-group">
-							<select class="form-control" id="sel1">
+							<select class="form-control" id="output">
 								<option value="commonspeak-plain">Commonspeak (plain)</option>
 								<option value="commonspeak-weskethian" selected="selected">Commonspeak (Weskethian)</option>
 								<option value="minamic">Minamic</option>
 							</select>
 							
 						<!-- Translation output -->
-						<textarea class="form-control" placeholder="Output text" rows="15" id="output"></textarea>
+						<textarea class="form-control" placeholder="Output text" rows="15" id="output-text"></textarea>
 						</div>
 					</div>
 				</div>
@@ -60,9 +60,22 @@
 	</div>
 </div>
 <script>
+let inputLang;
+let outputLang;
+
+('#input').change(() => {
+    inputLang = $(this).val();
+	console.log(inputLang);
+});
+
+('#output').change(() => {
+    outputLang = $(this).val();
+	console.log(outputLang);
+});
+
 $(document).ready(() => {
-    $('#input').on('input', (event) => {
-		console.log('Changed!');
+    $('#input-text').on('input', (event) => {
+		console.log('Changed!')
 	});
 });
 </script>
