@@ -82,7 +82,7 @@ let getDay = (jehvnarTime) => {
 	let day;
 	day = 18 - ((month * 18) - daysElapsedThisYear);
 	
-	return day;
+	return Math.round(day);
 }
 
 let getSeason = () => {
