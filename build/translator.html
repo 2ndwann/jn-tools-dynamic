@@ -32,22 +32,26 @@
 					<div class="form-group">
 						<!-- Language selection -->
 						<select class="form-control" id="sel1">
-							<option>...</option>
+							<option value="commonspeak-plain" selected="selected">Commonspeak (plain)</option>
+							<option value="commonspeak-weskethian">Commonspeak (Weskethian)</option>
+							<option value="minamic">Minamic</option>
 						</select>
 						
 						<!-- Translation input -->
-						<textarea class="form-control" rows="15" id="comment"></textarea>
+						<textarea class="form-control" placeholder="Enter text here" rows="15" id="input"></textarea>
 					</div>
 				</div>
 				<div class="col-sm-6">
 						<!-- Language selection -->
 						<div class="form-group">
 							<select class="form-control" id="sel1">
-								<option>...</option>
+								<option value="commonspeak-plain">Commonspeak (plain)</option>
+								<option value="commonspeak-weskethian" selected="selected">Commonspeak (Weskethian)</option>
+								<option value="minamic">Minamic</option>
 							</select>
 							
 						<!-- Translation output -->
-						<textarea class="form-control" rows="15" id="comment"></textarea>
+						<textarea class="form-control" placeholder="Output text" rows="15" id="output"></textarea>
 						</div>
 					</div>
 				</div>
@@ -55,109 +59,10 @@
 		</div>
 	</div>
 </div>
-
 <script>
-const jehvnarEpoch = 1590883200000; // The Jehvnar epoch
-const monthsInAYear = 4; // How many months there are in a year (unused var)
-const daysInAYear = 72; // How many days are in a year (unused var)
-
-let unixTimeNow; // The unix millis time now since Unix epoch
-let jehvnarTimeNow; // The Jehvnar time now in milliseconds
-
-let timeOffset = 0; // Ingame time offset in milliseconds (probably gonna be used later)
-
-let getTodayUTC = () => {
-	let todayDate = new Date().getUTCDate(); // Get today's date
-	let todayMonth = new Date().getUTCMonth() + 1; // Get today's month
-	let todayYear = new Date().getUTCFullYear(); // Get today's year
-	let today = new Date(String(todayYear) + '-' + String(todayMonth).padStart(2, '0') + '-' + String(todayDate).padStart(2, '0') + 'T00:00:00-00:00'); // Get today when it started at GMT 00:00
-	
-	return today;
-}
-
-// Format Jehvnar Reckoning year
-let getYear = (jehvnarTime) => {
-	return Math.round(jehvnarTime / 86400000);
-}
-
-let getDaysElapsed = (jehvnarTime) => {	
-	let today = getTodayUTC();
-	
-	let timeElapsedForToday = unixTimeNow - today.getTime();
-	
-	timeElapsedForToday = timeElapsedForToday / 1200000 // to minecraft days
-	
-	return Math.round(timeElapsedForToday);
-
-}
-
-// Format month based on 4-month system
-let getMonth = (jehvnarTime) => {
-	let today = getTodayUTC();
-	
-	let timeElapsedForToday = unixTimeNow - today.getTime();
-	
-	timeElapsedForToday = timeElapsedForToday / 60000 // to minutes
-	timeElapsedForToday = timeElapsedForToday / 20 // to minecraft days
-	
-	let daysElapsedThisYear = timeElapsedForToday;
-	let month;
-	
-	// basically 
-	if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 18) { month = 1; }
-	if (daysElapsedThisYear > 18 && daysElapsedThisYear <= 36) { month = 2; }
-	if (daysElapsedThisYear > 36 && daysElapsedThisYear <= 54) { month = 3; }
-	if (daysElapsedThisYear > 54 && daysElapsedThisYear <= 72) { month = 4; }
-	
-	return month;
-}
-
-let getDay = (jehvnarTime) => {
-	let today = getTodayUTC();
-	
-	let timeElapsedForToday = unixTimeNow - today.getTime();
-	
-	timeElapsedForToday = timeElapsedForToday / 60000 // to minutes
-	timeElapsedForToday = timeElapsedForToday / 20 // to minecraft days
-	
-	let daysElapsedThisYear = timeElapsedForToday;
-	
-	let month = getMonth(jehvnarTimeNow);
-	
-	// get how many days elapsed since this month
-	let day;
-	day = 18 - ((month * 18) - daysElapsedThisYear);
-	
-	return Math.round(day);
-}
-
-let getSeason = () => {
-	let month = getMonth(jehvnarTimeNow);
-	
-	if (month == 1) { return "Winter"; }
-	if (month == 2) { return "Spring"; }
-	if (month == 3) { return "Summer"; }
-	if (month == 4) { return "Fall"; }
-}
-
-
-// Update the time
-let updateTime = () => {
-	unixTimeNow = Date.now(); // Update unix time
-	jehvnarTimeNow = unixTimeNow - jehvnarEpoch + timeOffset; // Derive Jehvnar millisecond time
-	
-	// Update timestamps
-	$('#year').html(getYear(jehvnarTimeNow));
-	$('#daysElapsed').html(getDaysElapsed(jehvnarTimeNow));
-	$('#month').html(getMonth(jehvnarTimeNow));
-	$('#day').html(getDay(jehvnarTimeNow));
-	$('#season').html(getSeason(jehvnarTimeNow));
-	
-	$('#unixTimeMillis').html(unixTimeNow);
-	$('#jehvnarTimeNow').html(jehvnarTimeNow);
-	$('#timeOffset').html(timeOffset);
-}
-setInterval(updateTime, 1); // Update the time
+$("#input").change(() => {
+    console.log('changed!');
+});
 </script>
 </body>
 </html>

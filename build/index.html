@@ -30,7 +30,7 @@
 			<div class="form-group mb-3">
 				<label for="calendarSystem">Select calendar system:</label>
 				<select class="form-control" id="calendarSystem">
-					<option value="4-month">4-month system</option>
+					<option value="4-month" selected="selected">4-month system</option>
 					<option value="3-month">3-month system</option>
 					<option value="monthless">Monthless system</option>
 				</select>
@@ -188,7 +188,7 @@ let updateTime = () => {
 setInterval(updateTime, 1); // Update the time
 
 // Specify calendar system to use
-$('#calendarSystem').change(function() {
+$('#calendarSystem').change(() => {
     if ($(this).val() === '4-month') { // if 4 month system
         $('#optionalContent').show();
 		monthsInAYear = 4; // Change the months of the year
