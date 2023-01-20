@@ -188,7 +188,7 @@ let updateTime = () => {
 setInterval(updateTime, 1); // Update the time
 
 // Specify calendar system to use
-$('#calendarSystem').change((event) => {
+$('#calendarSystem').change(function() {
     if ($(this).val() === '4-month') { // if 4 month system
         $('#optionalContent').show();
 		monthsInAYear = 4; // Change the months of the year

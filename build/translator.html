@@ -67,20 +67,20 @@ let inputLang = 'commonspeak-plain';
 let outputLang = 'commonspeak-weskethian';
 
 // When input language changes
-$('#input-lang').change(() => {
+$('#input-lang').change(function() {
     inputLang = $(this).val();
 	console.log(inputLang);
 });
 
 // When output language changes
-$('#output-lang').change(() => {
+$('#output-lang').change(function() {
     outputLang = $(this).val();
 	console.log(outputLang);
 });
 
 // When input language changes
 $(document).ready((event) => {
-    $('#input-text').on('input', (event) => {
+    $('#input-text').on('input', function(event) {
 		console.log($('#input-text').val());
 		
 		// If the input text is the same as the output text then just copy over the same text to the output
