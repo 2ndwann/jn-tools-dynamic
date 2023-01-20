@@ -25,21 +25,20 @@
 	<div class="container">
 		<div class="bg-light p-5 mb-3">
 			<h2>Calendar</h2>
-
-			<h3>The current time and date is:</h3>
-			<p class="display-1">Year <span id="year">0</span> <span style="font-size:30px">month <span id="month">0</span>, day <span id="day">0</span></span></p>
-			<p><span id="daysElapsed" class="bold">0</span> days have elapsed since the beginning of this year.<br/>
-			<span id="season" class="bold"></span> is the current season.</p>
 			
 			<!-- Select calendar system -->
 			<div class="form-group">
 				<label for="sel1">Select calendar system:</label>
 				<select class="form-control" id="sel1">
 					<option>Monthless system</option>
-					<option>3-month system</option>
 					<option>4-month system</option>
 				</select>
 			</div>
+			
+			<h3>The current time and date is:</h3>
+			<p class="display-1">Year <span id="year">0</span> <span style="font-size:30px">month <span id="month">0</span>, day <span id="day">0</span></span></p>
+			<p><span id="daysElapsed" class="bold">0</span> days have elapsed since the beginning of this year.<br/>
+			<span id="season" class="bold"></span> is the current season.</p>
 			
 			<!-- debug info -->
 			<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#debug-info">View debug info</button>
