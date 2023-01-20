@@ -6,19 +6,28 @@
 <p><span id="year">0</span>/<span id="month">0</span>/<span id="day">0</span></p>
 
 <script>
-let jehvnarEpoch = new Date('May 31, 2020 00:00 GMT+0').getTime(); // The Jehvnar epoch
+const jehvnarEpoch = new Date('May 31, 2020 00:00 GMT+0').getTime(); // The Jehvnar epoch
+const monthsInAYear = 4; // How many months there are in a year
+const daysInAYear = 72; // How many days are in a year
 
 let unixTimeNow; // The unix millis time now since Unix epoch
 let jehvnarTimeNow; // The Jehvnar time now in milliseconds
 
+let timeOffset = 0; // Ingame time offset in milliseconds
+
+// Update the time
 let updateTime = () => {
 	unixTimeNow = Date.now(); // Update unix time
-	jehvnarTimeNow = unixTimeNow - jehvnarEpoch; // Derive Jehvnar millisecond time
+	jehvnarTimeNow = unixTimeNow - jehvnarEpoch + timeOffset; // Derive Jehvnar millisecond time
 }
 setInterval(updateTime, 1); // Update the time
 
 let formatYear = (year) => {
 	return Math.round(year / 86400000);
+}
+
+let formatMonth = (year) => {
+	return Math.round(year);
 }
 
 // Update tally
