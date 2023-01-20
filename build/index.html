@@ -18,6 +18,14 @@ let jehvnarTimeNow; // The Jehvnar time now in milliseconds
 
 let timeOffset = 0; // Ingame time offset in milliseconds
 
+let formatYear = (jehvnarTime) => {
+	return Math.round(jehvnarTime / 86400000);
+}
+
+let formatMonth = (jehvnarTime) => {
+	//todo
+}
+
 // Update the time
 let updateTime = () => {
 	unixTimeNow = Date.now(); // Update unix time
@@ -28,14 +36,6 @@ let updateTime = () => {
 	document.getElementById('jehvnarEpochMillis').innerHTML = jehvnarTimeNow;
 }
 setInterval(updateTime, 1); // Update the time
-
-let formatYear = (jehvnarTime) => {
-	return Math.round(jehvnarTime / 86400000);
-}
-
-let formatMonth = (jehvnarTime) => {
-	//todo
-}
 </script>
 </body>
 </html>
