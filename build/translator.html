@@ -60,6 +60,8 @@
 	</div>
 </div>
 <script>
+//todo
+
 // Default input languages
 let inputLang = 'commonspeak-plain';
 let outputLang = 'commonspeak-weskethian';
@@ -79,7 +81,7 @@ $('#output-lang').change(() => {
 // When input language changes
 $(document).ready(() => {
     $('#input-text').on('input', (event) => {
-		console.log('Changed!')
+		$('#input-text').html();
 		
 		// If the input text is the same as the output text then just copy over the same text to the output
 		if (inputLang == outputLang) {
