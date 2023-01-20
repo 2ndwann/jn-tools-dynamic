@@ -8,7 +8,7 @@
 <p><span id="season"></span> is the current season.</p>
 
 <h2>Info:</h2>
-<p>There are 72 days in a Jehvnar year. The year is divided into 4 "months", totalling 18 days each.</p>
+<p>There are 72 days in a Jehvnar year. In this calendar system, the year is divided into 4 "months", with each month totalling 18 days.</p>
 
 <script>
 const jehvnarEpoch = 1590883200000; // The Jehvnar epoch
@@ -66,6 +66,25 @@ let getMonth = (jehvnarTime) => {
 	return month;
 }
 
+let getDay = (jehvnarTime) => {
+	let today = getTodayUTC();
+	
+	let timeElapsedForToday = unixTimeNow - today.getTime();
+	
+	timeElapsedForToday = timeElapsedForToday / 60000 // to minutes
+	timeElapsedForToday = timeElapsedForToday / 20 // to minecraft days
+	
+	let daysElapsedThisYear = timeElapsedForToday;
+	
+	let month = getMonth(jehvnarTimeNow);
+	
+	// get day
+	let day;
+	day = daysElapsedThisYear - (month * 18);
+	
+	return day;
+}
+
 
 // Update the time
 let updateTime = () => {
@@ -76,6 +95,7 @@ let updateTime = () => {
 	document.getElementById('year').innerHTML = getYear(jehvnarTimeNow);
 	document.getElementById('daysElapsed').innerHTML = getDaysElapsed(jehvnarTimeNow);
 	document.getElementById('month').innerHTML = getMonth(jehvnarTimeNow);
+	document.getElementById('day').innerHTML = getDay(jehvnarTimeNow);
 }
 setInterval(updateTime, 1); // Update the time
 </script>
