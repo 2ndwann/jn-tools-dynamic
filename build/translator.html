@@ -81,11 +81,11 @@ $('#output-lang').change(() => {
 // When input language changes
 $(document).ready(() => {
     $('#input-text').on('input', (event) => {
-		$('#input-text').html();
+		$('#input-text').val();
 		
 		// If the input text is the same as the output text then just copy over the same text to the output
 		if (inputLang == outputLang) {
-			$('#output-text').html($('#input-text').html());
+			$('#output-text').val($('#input-text').val());
 		}
 	});
 });
