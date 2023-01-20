@@ -55,7 +55,7 @@
 		
 		<div class="alert alert-info">
 			<h3>Info:</h3>
-			<p>There are 72 days in a Jehvnar year. In this calendar system, the year is divided into 4 "months", with each month totalling 18 days.</p>
+			<p>There are 72 days in a Jehvnar year. In this calendar system, the year is divided into <span id="numberOfMonths">4</span> "months", with each month totalling <span id="numberOfDays">18</span> days.</p>
 		</div>
 	</div>
 	
@@ -181,6 +181,9 @@ let updateTime = () => {
 	$('#unixTimeMillis').html(unixTimeNow);
 	$('#jehvnarTimeNow').html(jehvnarTimeNow);
 	$('#timeOffset').html(timeOffset);
+	
+	$('#numberOfMonths').html(monthsInAYear);
+	$('#numberOfDays').html(daysInAYear / monthsInAYear);
 }
 setInterval(updateTime, 1); // Update the time
 
