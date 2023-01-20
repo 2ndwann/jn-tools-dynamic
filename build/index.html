@@ -6,15 +6,27 @@
 <p><span id="year">0</span>/<span id="month">0</span>/<span id="day">0</span></p>
 
 <script>
-var unixTimeNow; // The unix millis time now
+let jehvnarEpoch = new Date('May 31, 2020 00:00 GMT+0').getTime(); // The Jehvnar epoch
 
-setInterval(() => { // Update time
-	timeNow = Date.now();
-}, 1);
+let unixTimeNow; // The unix millis time now since Unix epoch
+let jehvnarTimeNow; // The Jehvnar time now in milliseconds
 
+let updateTime = () => {
+	unixTimeNow = Date.now(); // Update unix time
+	jehvnarTimeNow = unixTimeNow - jehvnarEpoch; // Derive Jehvnar millisecond time
+}
+setInterval(updateTime, 1); // Update the time
+
+let formatYear = (year) => {
+	return Math.round(year / 86400000);
+}
+
+// Update tally
 setInterval(() => {
-	console.log('second passed');
-	console.log(timeNow);
+	console.log(jehvnarTimeNow);
+	console.log(formatYear(jehvnarTimeNow));
+	
+	document.getElementById('year').innerHTML = formatYear(jehvnarTimeNow);
 }, 1000);
 </script>
 </body>
