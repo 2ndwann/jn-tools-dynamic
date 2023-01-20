@@ -28,15 +28,16 @@ let formatYear = (jehvnarTime) => {
 // Format month based on 4-month system
 let formatMonth = (jehvnarTime) => {
 	//todo
-	let today = new Date();
-	today = today.setUTCDate(new Date().getUTCDate());
-	today = today.setUTCMonth(new Date().getUTCMonth());
-	today = today.setUTCFullYear(new Date().getUTCFullYear())
-	today = today.getTime(); // Get today when it started at GMT 00:00
 	
-	let timeElapsedThisYear = unixTimeNow - today + timeOffset;
+	let todayDate = new Date().getUTCDate(); // Get today's date
+	let todayMonth = new Date().getUTCMonth() + 1; // Get today's month
+	let todayYear = new Date().getUTCFullYear(); // Get today's year
 	
-	return timeElapsedThisYear; // todo
+	let today = new Date(todayYear + '-' + todayMonth.padStart(2, '0') + '-' + todayDate.padStart(2, '0') + 'T00:00:00-00:00'); // Get today when it started at GMT 00:00
+	
+	let timeElapsedForToday = today.getTime() - jehvnarTimeNow + timeOffset;
+	
+	return timeElapsedForToday; // todo
 }
 
 
