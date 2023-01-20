@@ -4,6 +4,7 @@
 
 <p>The current time and date is (YYYY/MM/DD):<br/>
 <span id="year">0</span>/<span id="month">0</span>/<span id="day">0</span></p>
+<p><span id="daysElapsed">0</span> days have elapsed since this year.</p>
 
 <p>Debug info:<br/>
 Milliseconds since Jehvnar Reckoning Epoch: <span id="jehvnarEpochMillis"></span><br/>
@@ -20,22 +21,36 @@ let jehvnarTimeNow; // The Jehvnar time now in milliseconds
 let timeOffset = 0; // Ingame time offset in milliseconds (probably gonna be used later)
 
 // Format Jehvnar Reckoning year
-let formatYear = (jehvnarTime) => {
+let getYear = (jehvnarTime) => {
 	return Math.round(jehvnarTime / 86400000);
 }
 
+let getDaysElapsed = (jehvnarTime) => {	
+	let todayDate = new Date().getUTCDate(); // Get today's date
+	let todayMonth = new Date().getUTCMonth() + 1; // Get today's month
+	let todayYear = new Date().getUTCFullYear(); // Get today's year
+	let today = new Date(String(todayYear) + '-' + String(todayMonth).padStart(2, '0') + '-' + String(todayDate).padStart(2, '0') + 'T00:00:00-00:00'); // Get today when it started at GMT 00:00
+	let timeElapsedForToday = unixTimeNow - today.getTime();
+	
+	timeElapsedForToday = timeElapsedForToday / 1200000 // to minecraft days
+	
+	return timeElapsedForToday;
+
+}
 
 // Format month based on 4-month system
-let formatMonth = (jehvnarTime) => {
+let getMonth = (jehvnarTime) => {
 	//todo
 	
 	let todayDate = new Date().getUTCDate(); // Get today's date
 	let todayMonth = new Date().getUTCMonth() + 1; // Get today's month
 	let todayYear = new Date().getUTCFullYear(); // Get today's year
-	
 	let today = new Date(String(todayYear) + '-' + String(todayMonth).padStart(2, '0') + '-' + String(todayDate).padStart(2, '0') + 'T00:00:00-00:00'); // Get today when it started at GMT 00:00
 	
 	let timeElapsedForToday = unixTimeNow - today.getTime();
+	
+	timeElapsedForToday = timeElapsedForToday / 60000 // to minutes
+	timeElapsedForToday = timeElapsedForToday / 20 // to minecraft days
 	
 	return timeElapsedForToday; // todo
 }
@@ -47,9 +62,10 @@ let updateTime = () => {
 	jehvnarTimeNow = unixTimeNow - jehvnarEpoch + timeOffset; // Derive Jehvnar millisecond time
 	
 	// Update timestamps
-	document.getElementById('year').innerHTML = formatYear(jehvnarTimeNow);
+	document.getElementById('year').innerHTML = getYear(jehvnarTimeNow);
+	document.getElementById('daysElapsed').innerHTML = getDaysElapsed(jehvnarTimeNow);
 	document.getElementById('jehvnarEpochMillis').innerHTML = jehvnarTimeNow;
-	document.getElementById('jehvnarReckoningYearMillis').innerHTML = formatMonth(jehvnarTimeNow);
+	document.getElementById('jehvnarReckoningYearMillis').innerHTML = getMonth(jehvnarTimeNow);
 }
 setInterval(updateTime, 1); // Update the time
 </script>
