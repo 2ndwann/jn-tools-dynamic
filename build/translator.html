@@ -79,14 +79,14 @@ $('#output-lang').change(() => {
 });
 
 // When input language changes
-$(document).ready(() => {
+$(document).ready((event) => {
     $('#input-text').on('input', (event) => {
 		console.log($('#input-text').val());
 		
 		// If the input text is the same as the output text then just copy over the same text to the output
 		if (inputLang == outputLang) {
 			$('#output-text').val($('#input-text').val());
-		}
+		} // else, do some translating
 	});
 });
 </script>
