@@ -12,8 +12,8 @@
 
 <script>
 const jehvnarEpoch = 1590883200000; // The Jehvnar epoch
-const monthsInAYear = 4; // How many months there are in a year
-const daysInAYear = 72; // How many days are in a year
+const monthsInAYear = 4; // How many months there are in a year (unused var)
+const daysInAYear = 72; // How many days are in a year (unused var)
 
 let unixTimeNow; // The unix millis time now since Unix epoch
 let jehvnarTimeNow; // The Jehvnar time now in milliseconds
@@ -85,6 +85,15 @@ let getDay = (jehvnarTime) => {
 	return day;
 }
 
+let getSeason = () => {
+	let month = getMonth(jehvnarTimeNow);
+	
+	if (month == 1) { return "Winter"; }
+	if (month == 2) { return "Spring"; }
+	if (month == 3) { return "Summer"; }
+	if (month == 4) { return "Fall"; }
+}
+
 
 // Update the time
 let updateTime = () => {
@@ -96,6 +105,7 @@ let updateTime = () => {
 	document.getElementById('daysElapsed').innerHTML = getDaysElapsed(jehvnarTimeNow);
 	document.getElementById('month').innerHTML = getMonth(jehvnarTimeNow);
 	document.getElementById('day').innerHTML = getDay(jehvnarTimeNow);
+	document.getElementById('season').innerHTML = getSeason(jehvnarTimeNow);
 }
 setInterval(updateTime, 1); // Update the time
 </script>
