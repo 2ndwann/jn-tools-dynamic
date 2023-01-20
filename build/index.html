@@ -37,7 +37,7 @@
 			</div>
 			
 			<h3>The current time and date is:</h3>
-			<p class="display-1">Year <span id="year">0</span> <span style="font-size:30px">month <span id="month">0</span>, day <span id="day">0</span></span></p>
+			<p class="display-1">Year <span id="year">0</span> <span id="optionalContent"><span style="font-size:30px">month <span id="month">0</span>, day <span id="day">0</span></span></span></p>
 			<p><span id="daysElapsed" class="bold">0</span> days have elapsed since the beginning of this year.<br/>
 			<span id="season" class="bold"></span> is the current season.</p>
 			
@@ -181,11 +181,11 @@ setInterval(updateTime, 1); // Update the time
 // Specify calendar system to use
 $('#calendarSystem').change(function() {
     if ($(this).val() === '4-month') { // if 4 month system
-        console.log($(this).val());
+        $('#optionalContent').show();
     } else if ($(this).val() === '3-month') { // if 3 month system
-		console.log($(this).val());
+		$('#optionalContent').show();
 	} else if ($(this).val() === 'monthless') { // if monthless system
-		console.log($(this).val());
+		$('#optionalContent').hide();
 	} 
 });
 </script>
