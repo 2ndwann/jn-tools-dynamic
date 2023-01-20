@@ -32,7 +32,7 @@
 					<div class="form-group">
 						<!-- Language selection -->
 						<select class="form-control" id="input-lang">
-							<option value="commonspeak-plain" selected="selected">Commonspeak (plain)</option>
+							<option value="commonspeak-plain">Commonspeak (plain)</option>
 							<option value="commonspeak-weskethian">Commonspeak (Weskethian)</option>
 							<option value="minamic">Minamic</option>
 						</select>
@@ -45,8 +45,8 @@
 						<!-- Language selection -->
 						<div class="form-group">
 							<select class="form-control" id="output-lang">
+								<option value="commonspeak-weskethian">Commonspeak (Weskethian)</option>
 								<option value="commonspeak-plain">Commonspeak (plain)</option>
-								<option value="commonspeak-weskethian" selected="selected">Commonspeak (Weskethian)</option>
 								<option value="minamic">Minamic</option>
 							</select>
 							
@@ -79,7 +79,7 @@ $('#output-lang').change(() => {
 });
 
 // When input language changes
-$(document).ready(function() {
+$(document).ready(() {
     $('#input-text').on('input', (event) => {
 		$('#input-text').val();
 		
