@@ -3,7 +3,7 @@
 <h1>Calendar</h1>
 
 <h2>The current time and date is:</h2>
-<p>year <span id="year">0</span>, month <span id="month">0</span>, day <span id="day">0</span></p>
+<p>Year <span id="year">0</span>, month <span id="month">0</span>, day <span id="day">0</span></p>
 <p><span id="daysElapsed">0</span> days have elapsed since the beginning of this year.</p>
 <p><span id="season"></span> is the current season.</p>
 
@@ -61,12 +61,13 @@ let getMonth = (jehvnarTime) => {
 	if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 18) { month = 1; }
 	if (daysElapsedThisYear > 18 && daysElapsedThisYear <= 36) { month = 2; }
 	if (daysElapsedThisYear > 36 && daysElapsedThisYear <= 54) { month = 3; }
-	if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 72) { month = 4; }
+	if (daysElapsedThisYear > 54 && daysElapsedThisYear <= 72) { month = 4; }
 	
 	return month;
 }
 
 let getDay = (jehvnarTime) => {
+	//todo
 	let today = getTodayUTC();
 	
 	let timeElapsedForToday = unixTimeNow - today.getTime();
@@ -78,10 +79,8 @@ let getDay = (jehvnarTime) => {
 	
 	let month = getMonth(jehvnarTimeNow);
 	
-	// get day
+	// get how many days elapsed since this month
 	let day;
-	day = daysElapsedThisYear - (month * 18);
-	
 	return day;
 }
 
