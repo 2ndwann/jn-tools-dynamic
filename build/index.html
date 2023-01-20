@@ -23,21 +23,23 @@
 	</div>
 
 	<div class="container">
-		<h2>Calendar</h2>
+		<div class="well">
+			<h2>Calendar</h2>
 
-		<h3>The current time and date is:</h3>
-		<p class="display-1">Year <span id="year">0</span> <span style="font-size:30px">month <span id="month">0</span>, day <span id="day">0</span></span></p>
-		<p><span id="daysElapsed" class="bold">0</span> days have elapsed since the beginning of this year.<br/>
-		<span id="season" class="bold"></span> is the current season.</p>
+			<h3>The current time and date is:</h3>
+			<p class="display-1">Year <span id="year">0</span> <span style="font-size:30px">month <span id="month">0</span>, day <span id="day">0</span></span></p>
+			<p><span id="daysElapsed" class="bold">0</span> days have elapsed since the beginning of this year.<br/>
+			<span id="season" class="bold"></span> is the current season.</p>
 		
-		<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#debug-info">View debug info</button>
-		<div id="debug-info" class="collapse">
-			<h3>Debug info:</h3>
+			<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#debug-info">View debug info</button>
+			<div id="debug-info" class="collapse">
+				<h3>Debug info:</h3>
 			
-			<p>Unix time (ms): <span id="unixTimeMillis"></span><br/>
-				Jehvnar time now (ms): <span id="jehvnarTimeNow"></span><br/>
-				Time offset (ms): <span id="timeOffset"></span>
-			</p>
+				<p>Unix time (ms): <span id="unixTimeMillis"></span><br/>
+					Jehvnar time now (ms): <span id="jehvnarTimeNow"></span><br/>
+					Time offset (ms): <span id="timeOffset"></span>
+				</p>
+			</div>
 		</div>
 		
 		<div class="alert alert-info">
