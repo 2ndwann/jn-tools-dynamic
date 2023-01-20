@@ -11,15 +11,20 @@
 <body>
 <div class="container-fluid">
 	<div class="container">
-		<h1>Calendar</h1>
+		<h2>Calendar</h2>
 
-		<h2>The current time and date is:</h2>
+		<h3>The current time and date is:</h3>
 		<p class="display-1">Year <span id="year" class="bold">0</span>, month <span id="month" class="bold">0</span>, day <span id="day" class="bold">0</span></p>
 		<p><span id="daysElapsed" class="bold">0</span> days have elapsed since the beginning of this year.</p>
 		<p><span id="season" class="bold"></span> is the current season.</p>
 		
+		<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#debug-info">View debug info</button>
+		<div id="debug-info" class="collapse">
+			<h3>Debug info:</h3>
+		</div>
+		
 		<div class="alert alert-info">
-			<h2>Info:</h2>
+			<h3>Info:</h3>
 			<p>There are 72 days in a Jehvnar year. In this calendar system, the year is divided into 4 "months", with each month totalling 18 days.</p>
 		</div>
 	</div>
