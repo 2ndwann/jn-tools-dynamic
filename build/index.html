@@ -80,7 +80,7 @@ let getDay = (jehvnarTime) => {
 	
 	// get how many days elapsed since this month
 	let day;
-	day = daysElapsedThisYear - (month * 18);
+	day = (month * 18) - daysElapsedThisYear;
 	
 	return day;
 }
