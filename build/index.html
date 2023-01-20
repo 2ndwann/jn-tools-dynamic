@@ -32,11 +32,16 @@ let formatMonth = (jehvnarTime) => {
 	let todayDate = new Date().getUTCDate(); // Get today's date
 	let todayMonth = new Date().getUTCMonth() + 1; // Get today's month
 	let todayYear = new Date().getUTCFullYear(); // Get today's year
-	let today = new Date(todayYear, todayMonth, todayDate); // Get today when it started at GMT 00:00
 	
-	let timeElapsedForToday = today.getTime() - jehvnarTimeNow + timeOffset;
+	let today = new Date();
+	today.setUTCDate(new Date().getUTCDate());
+	today.setUTCMonth(new Date().getUTCMonth());
+	today.setUTCFullYear(new Date().getUTCFullYear())
+	today = today.getTime(); // Get today when it started at GMT 00:00
 	
-	return timeElapsedForToday; // todo
+	let timeElapsedThisYear = unixTimeNow - today + timeOffset;
+	
+	return timeElapsedThisYear; // todo
 }
 
 
