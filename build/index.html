@@ -28,9 +28,11 @@
 			
 			<!-- Select calendar system -->
 			<div class="form-group mb-3">
-				<label for="sel1">Select calendar system:</label>
-				<select class="form-control" id="sel1">
-					<option>4-month system</option>
+				<label for="calendarSystem">Select calendar system:</label>
+				<select class="form-control" id="calendarSystem">
+					<option value="4-month">4-month system</option>
+					<option value="3-month">3-month system</option>
+					<option value="monthless">Monthless system</option>
 				</select>
 			</div>
 			
@@ -161,6 +163,17 @@ let updateTime = () => {
 	$('#timeOffset').html(timeOffset);
 }
 setInterval(updateTime, 1); // Update the time
+
+// Specify calendar system to use
+$('#calendarSystem').change(function() {
+    if ($(this).val() === '4-month') {
+        console.log($(this).val());
+    } else if ($(this).val() === '3-month') {
+		console.log($(this).val());
+	} else if ($(this).val() === 'monthless') {
+		console.log($(this).val());
+	} 
+});
 </script>
 </body>
 </html>
