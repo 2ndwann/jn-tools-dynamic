@@ -6,7 +6,8 @@
 <span id="year">0</span>/<span id="month">0</span>/<span id="day">0</span></p>
 
 <p>Debug info:<br/>
-Milliseconds since Jehvnar Reckoning Epoch: <span id="jehvnarEpochMillis"></span></p>
+Milliseconds since Jehvnar Reckoning Epoch: <span id="jehvnarEpochMillis"></span><br/>
+Milliseconds elapsed since beginning of Jehvnar Reckoning year: <span id="jehvnarReckoningYearMillis"></span></p>
 
 <script>
 const jehvnarEpoch = new Date('May 31, 2020 00:00 GMT+0').getTime(); // The Jehvnar epoch
@@ -16,15 +17,29 @@ const daysInAYear = 72; // How many days are in a year
 let unixTimeNow; // The unix millis time now since Unix epoch
 let jehvnarTimeNow; // The Jehvnar time now in milliseconds
 
-let timeOffset = 0; // Ingame time offset in milliseconds
+let timeOffset = 0; // Ingame time offset in milliseconds (probably gonna be used later)
 
+// Format Jehvnar Reckoning year
 let formatYear = (jehvnarTime) => {
 	return Math.round(jehvnarTime / 86400000);
 }
 
+
+// Format month based on 4-month system
 let formatMonth = (jehvnarTime) => {
 	//todo
+	
+	let todayDate = new Date().getUTCDate(); // Get today's date
+	let todayMonth = new Date().getUTCMonth() + 1; // Get today's month
+	let todayYear = new Date().getUTCFullYear(); // Get today's year
+	
+	let today = new Date(todayYear, todayMonth, todayDate); // Get today when it started at GMT 00:00
+	
+	let timeElapsedForToday = today.getTime() - unixTimeNow + timeOffset;
+	
+	return timeElapsedForToday; // todo
 }
+
 
 // Update the time
 let updateTime = () => {
@@ -34,6 +49,7 @@ let updateTime = () => {
 	// Update timestamps
 	document.getElementById('year').innerHTML = formatYear(jehvnarTimeNow);
 	document.getElementById('jehvnarEpochMillis').innerHTML = jehvnarTimeNow;
+	document.getElementById('jehvnarReckoningYearMillis').innerHTML = formatMonth(jehvnarTimeNow);
 }
 setInterval(updateTime, 1); // Update the time
 </script>
