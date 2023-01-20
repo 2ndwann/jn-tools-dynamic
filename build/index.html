@@ -22,6 +22,10 @@ let timeOffset = 0; // Ingame time offset in milliseconds
 let updateTime = () => {
 	unixTimeNow = Date.now(); // Update unix time
 	jehvnarTimeNow = unixTimeNow - jehvnarEpoch + timeOffset; // Derive Jehvnar millisecond time
+	
+	// Update timestamps
+	document.getElementById('year').innerHTML = formatYear(jehvnarTimeNow);
+	document.getElementById('jehvnarEpochMillis').innerHTML = jehvnarTimeNow;
 }
 setInterval(updateTime, 1); // Update the time
 
@@ -32,12 +36,6 @@ let formatYear = (jehvnarTime) => {
 let formatMonth = (jehvnarTime) => {
 	//todo
 }
-
-// Update tally
-setInterval(() => {
-	document.getElementById('year').innerHTML = formatYear(jehvnarTimeNow);
-	document.getElementById('jehvnarEpochMillis').innerHTML = jehvnarTimeNow;
-}, 1000);
 </script>
 </body>
 </html>
