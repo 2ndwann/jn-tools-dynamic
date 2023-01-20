@@ -60,8 +60,10 @@
 	</div>
 </div>
 <script>
-$(document).ready(function() {
-    $('#input').on('input', (event) => alert('Changed!'));
+$(document).ready(() => {
+    $('#input').on('input', (event) => {
+		console.log('Changed!');
+	});
 });
 </script>
 </body>
