@@ -137,7 +137,21 @@ let getDay = (jehvnarTime) => {
 }
 
 let getSeason = () => {
-	let month = getMonth(jehvnarTimeNow);
+	let today = getTodayUTC();
+	
+	let timeElapsedForToday = unixTimeNow - today.getTime();
+	
+	timeElapsedForToday = timeElapsedForToday / 60000 // to minutes
+	timeElapsedForToday = timeElapsedForToday / 20 // to minecraft days
+	
+	let daysElapsedThisYear = timeElapsedForToday;
+	let month;
+	
+	// basically 
+	if (daysElapsedThisYear > 0 && daysElapsedThisYear <= 18) { month = 1; }
+	if (daysElapsedThisYear > 18 && daysElapsedThisYear <= 36) { month = 2; }
+	if (daysElapsedThisYear > 36 && daysElapsedThisYear <= 54) { month = 3; }
+	if (daysElapsedThisYear > 54 && daysElapsedThisYear <= 72) { month = 4; }
 	
 	if (month == 1) { return "Winter"; }
 	if (month == 2) { return "Spring"; }
@@ -166,11 +180,11 @@ setInterval(updateTime, 1); // Update the time
 
 // Specify calendar system to use
 $('#calendarSystem').change(function() {
-    if ($(this).val() === '4-month') {
+    if ($(this).val() === '4-month') { // if 4 month system
         console.log($(this).val());
-    } else if ($(this).val() === '3-month') {
+    } else if ($(this).val() === '3-month') { // if 3 month system
 		console.log($(this).val());
-	} else if ($(this).val() === 'monthless') {
+	} else if ($(this).val() === 'monthless') { // if monthless system
 		console.log($(this).val());
 	} 
 });
