@@ -34,7 +34,7 @@ let getDaysElapsed = (jehvnarTime) => {
 	
 	timeElapsedForToday = timeElapsedForToday / 1200000 // to minecraft days
 	
-	return timeElapsedForToday;
+	return Math.round(timeElapsedForToday);
 
 }
 
@@ -52,7 +52,7 @@ let getMonth = (jehvnarTime) => {
 	timeElapsedForToday = timeElapsedForToday / 60000 // to minutes
 	timeElapsedForToday = timeElapsedForToday / 20 // to minecraft days
 	
-	return timeElapsedForToday; // todo
+	return Math.round(timeElapsedForToday); // todo only!!!
 }
 
 
