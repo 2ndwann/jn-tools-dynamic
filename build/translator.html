@@ -17,37 +17,40 @@
 				<a class="nav-link" href="/index.html">Calendar</a> <!-- for now the calendar will be on index.html -->
 			</li>
 			<li class="nav-item">
-				<a class="nav-link disabled" href="/translator.html">Language Translator (soon)</a>
+				<a class="nav-link" href="/translator.html">Language Translator (soon)</a>
 			</li>
 		</ul>
 	</div>
 
 	<div class="container">
 		<div class="bg-light p-5 mb-3">
-			<h2>Calendar</h2>
+			<h2>Translator</h2>
 			
-			<!-- Select calendar system -->
-			<div class="form-group mb-3">
-				<label for="sel1">Select calendar system:</label>
-				<select class="form-control" id="sel1">
-					<option>4-month system</option>
-				</select>
-			</div>
-			
-			<h3>The current time and date is:</h3>
-			<p class="display-1">Year <span id="year">0</span> <span style="font-size:30px">month <span id="month">0</span>, day <span id="day">0</span></span></p>
-			<p><span id="daysElapsed" class="bold">0</span> days have elapsed since the beginning of this year.<br/>
-			<span id="season" class="bold"></span> is the current season.</p>
-			
-			<!-- debug info -->
-			<button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#debug-info">View debug info</button>
-			<div id="debug-info" class="collapse">
-				<h3>Debug info:</h3>
-			
-				<p>Unix time (ms): <span id="unixTimeMillis"></span><br/>
-					Jehvnar time now (ms): <span id="jehvnarTimeNow"></span><br/>
-					Time offset (ms): <span id="timeOffset"></span>
-				</p>
+			<!--translation boxes appear here -->
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<!-- Language selection -->
+						<select class="form-control" id="sel1">
+							<option>...</option>
+						</select>
+						
+						<!-- Translation input -->
+						<textarea class="form-control" rows="15" id="comment"></textarea>
+					</div>
+				</div>
+				<div class="col-sm-6">
+						<!-- Language selection -->
+						<div class="form-group">
+							<select class="form-control" id="sel1">
+								<option>...</option>
+							</select>
+							
+						<!-- Translation output -->
+						<textarea class="form-control" rows="15" id="comment"></textarea>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		
