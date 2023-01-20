@@ -67,7 +67,6 @@ let getMonth = (jehvnarTime) => {
 }
 
 let getDay = (jehvnarTime) => {
-	//todo
 	let today = getTodayUTC();
 	
 	let timeElapsedForToday = unixTimeNow - today.getTime();
@@ -81,6 +80,8 @@ let getDay = (jehvnarTime) => {
 	
 	// get how many days elapsed since this month
 	let day;
+	day = daysElapsedThisYear - (month * 18);
+	
 	return day;
 }
 
