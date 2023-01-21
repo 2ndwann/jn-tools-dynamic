@@ -62,52 +62,6 @@
 	</div>
 </div>
 <script>
-// todo
-// Default input languages
-let inputLang = 'commonspeak-plain';
-let outputLang = 'commonspeak-weskethian';
-
-// Clear the output of the translator
-let clearOutput = () => {
-	$('#output-text').val('');
-}
-
-// When input language changes
-$('#input-lang').change(function() {
-    inputLang = $(this).val();
-	clearOutput();
-});
-
-// When output language changes
-$('#output-lang').change(function() {
-    outputLang = $(this).val();
-	clearOutput();
-});
-
-// When input language changes
-$(document).ready((event) => {
-    $('#input-text').on('input', function(event) {
-		let inputText = $('#input-text').val();
-		let outputText;
-		
-		// If the input text is the same as the output text then just copy over the same text to the output
-		if (inputLang == outputLang) {
-			$('#output-text').val(inputText);
-		} else {
-			clearOutput();
-			 
-			// do some translating
-			console.log('About to translate!!', 'from:', inputLang, 'to:', outputLang, 'text:', inputText);
-			 
-			if (outputLang == 'minamic') {outputText = minamiTranslate(inputText); }
-			 
-			$('#output-text').val(outputText);
-		}
-	});
-});
-</script>
-
-<script>
 export function minamiTranslate(s) {
 	s = s.replace(/あ/g, '安');
 	s = s.replace(/い/g, '以');
@@ -198,6 +152,52 @@ export function minamiTranslate(s) {
 	
 	return s;
 }
+</script>
+<script>
+// todo
+// Default input languages
+let inputLang = 'commonspeak-plain';
+let outputLang = 'commonspeak-weskethian';
+
+// Clear the output of the translator
+let clearOutput = () => {
+	$('#output-text').val('');
+}
+
+// When input language changes
+$('#input-lang').change(function() {
+    inputLang = $(this).val();
+	clearOutput();
+});
+
+// When output language changes
+$('#output-lang').change(function() {
+    outputLang = $(this).val();
+	clearOutput();
+});
+
+// When input language changes
+$(document).ready((event) => {
+    $('#input-text').on('input', function(event) {
+		let inputText = $('#input-text').val();
+		let outputText;
+		
+		// If the input text is the same as the output text then just copy over the same text to the output
+		if (inputLang == outputLang) {
+			$('#output-text').val(inputText);
+		} else {
+			clearOutput();
+			 
+			// do some translating
+			console.log('About to translate!!', 'from:', inputLang, 'to:', outputLang, 'text:', inputText);
+			 
+			if (outputLang == 'minamic') {outputText = minamiTranslate(inputText); } // Minami translate
+			
+			// Apply resulting output text to output text window
+			$('#output-text').val(outputText);
+		}
+	});
+});
 </script>
 </body>
 </html>
