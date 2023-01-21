@@ -66,22 +66,24 @@
 let inputLang = 'commonspeak-plain';
 let outputLang = 'commonspeak-weskethian';
 
+// Clear the output of the translator
+let clearOutput = () => {
+	$('#output-text').val('');
+}
+
 // When input language changes
 $('#input-lang').change(function() {
     inputLang = $(this).val();
+	clearOutput();
 	console.log(inputLang);
 });
 
 // When output language changes
 $('#output-lang').change(function() {
     outputLang = $(this).val();
+	clearOutput();
 	console.log(outputLang);
 });
-
-// Clear the output of the translator
-let clearOutput = () => {
-	$('#output-text').val('');
-}
 
 // When input language changes
 $(document).ready((event) => {
