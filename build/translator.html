@@ -246,7 +246,7 @@ function minamiTranslate(s) {
 <script>
 // todo
 // Default input languages
-//let inputLang = 'commonspeak-plain';
+let inputLang = 'commonspeak-plain';
 let outputLang = 'commonspeak-weskethian';
 
 // Clear the output of the translator
@@ -258,24 +258,28 @@ let startTranslate = () => {
 	let inputText = $('#input-text').val();
 	let outputText;
 		
-	clearOutput();
+	// If the input text is the same as the output text then just copy over the same text to the output
+	if (inputLang == outputLang) {
+		$('#output-text').val(inputText);
+	} else {
+		clearOutput();
 
-	console.log('About to translate!!', 'from:', inputLang, 'to:', outputLang, 'text:', inputText);
+		console.log('About to translate!!', 'from:', inputLang, 'to:', outputLang, 'text:', inputText);
 			
-	// Do some translating
-	if (outputLang == 'minamic') {outputText = minamiTranslate(inputText); } // Minami translate
+		// Do some translating
+		if (outputLang == 'minamic') {outputText = minamiTranslate(inputText); } // Minami translate
 			
-	// Apply resulting output text to output text window
-	$('#output-text').val(outputText);
+		// Apply resulting output text to output text window
+		$('#output-text').val(outputText);
+	}
 }
 
+
 // When input language changes
-/**
 $('#input-lang').change(function() {
     inputLang = $(this).val();
 	clearOutput();
 });
-**/
 
 // When output language changes
 $('#output-lang').change(function() {
