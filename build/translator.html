@@ -252,6 +252,26 @@ let clearOutput = () => {
 	$('#output-text').val('');
 }
 
+let startTranslate = () => {
+	let inputText = $('#input-text').val();
+	let outputText;
+		
+	// If the input text is the same as the output text then just copy over the same text to the output
+	if (inputLang == outputLang) {
+		$('#output-text').val(inputText);
+	} else {
+		clearOutput();
+
+		console.log('About to translate!!', 'from:', inputLang, 'to:', outputLang, 'text:', inputText);
+			
+		// Do some translating
+		if (outputLang == 'minamic') {outputText = minamiTranslate(inputText); } // Minami translate
+			
+		// Apply resulting output text to output text window
+		$('#output-text').val(outputText);
+	}
+}
+
 // When input language changes
 $('#input-lang').change(function() {
     inputLang = $(this).val();
@@ -267,23 +287,7 @@ $('#output-lang').change(function() {
 // When input language changes
 $(document).ready((event) => {
     $('#input-text').on('input', function(event) {
-		let inputText = $('#input-text').val();
-		let outputText;
-		
-		// If the input text is the same as the output text then just copy over the same text to the output
-		if (inputLang == outputLang) {
-			$('#output-text').val(inputText);
-		} else {
-			clearOutput();
-			 
-			// do some translating
-			console.log('About to translate!!', 'from:', inputLang, 'to:', outputLang, 'text:', inputText);
-			 
-			if (outputLang == 'minamic') {outputText = minamiTranslate(inputText); } // Minami translate
-			
-			// Apply resulting output text to output text window
-			$('#output-text').val(outputText);
-		}
+		startTranslate();
 	});
 });
 </script>
