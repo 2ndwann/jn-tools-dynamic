@@ -6,7 +6,10 @@ app.set('view engine', 'ejs');
 
 
 app.get("/", (req, res) => {
-	res.send('hi');
+	res.render('index');
+});
+app.get("/translator", (req, res) => {
+	res.send('translator');
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
