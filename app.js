@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
 	res.render('index');
 });
 app.get("/translator", (req, res) => {
-	res.send('translator');
+	res.render('translator');
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
