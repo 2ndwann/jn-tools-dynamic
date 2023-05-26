@@ -1,0 +1,44 @@
+name: Weskethian
+description: Weskethian (alternatively known as "Weskethian Commonspeak", is the language of the Hobbits in Wesketh. Weskethian is the most similar to English in vocabulary and sentence structure. It is a highly versatile and developed language, with a large amount of unique vocabulary.
+writingSystems: 
+    - Commoncharacter
+    - Weskethian
+
+fallbackLanguages:
+    - English
+    
+writingSystemType: alphabetic
+commonCharacterCanBeUsedAsDefault: true
+transliterationLibraries: ~
+
+vocabulary:
+    -   keywords:
+                - river
+                - small river
+                - stream
+                - brook
+                - creek
+        
+        word:
+            native: ~
+            romanized: run
+            
+        definition: Small river
+        partOfSpeech: noun
+        coining: ~
+        synonyms: ~
+        
+    -   keywords:
+                - old
+                - ancient
+                - aged
+                - elderly        
+        
+        word:
+            native: ~
+            romanized: sageon
+        
+        definition: Extremely old, but not ancient or prehistoric.
+        partOfSpeech: noun
+        coining: ~
+        synonyms: ~

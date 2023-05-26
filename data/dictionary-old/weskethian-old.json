@@ -1,0 +1,73 @@
+{
+	"info": [
+		{
+			"among":"sus"
+		}
+	],
+	"vocabulary": [
+		{
+			"commonspeak": "",
+			"keywords": [
+				"river",
+				"small river",
+				"stream",
+				"brook",
+				"creek",
+			],
+			"definition": "Small river",
+			"languageNative": "run",
+			"languageRomanized": "run",
+			"partOfSpeech": "noun",
+			"coining": "unknown"
+		},
+		{
+			"commonspeak": "old",
+			"keywords": [
+				"old",
+				"extremely old",
+			],
+			"definition": "Extremely old, but not ancient or prehistoric.",
+			"languageNative": "sageon",
+			"languageRomanized": "sageon",
+			"partOfSpeech": "noun",
+			"coining": "unknown"
+		},
+		{
+			"commonspeak": "",
+			"keywords": [
+				"chunk",
+			],
+			"definition": "A distance of four chunks; 64 blocks",
+			"languageNative": "slithe",
+			"languageRomanized": "slithe",
+			"partOfSpeech": "noun",
+			"coining": "unknown"
+		},
+		{
+			"commonspeak": "",
+			"keywords": [
+				"block",
+				"slab",
+			],
+			"definition": "A distance of a little more than one block",
+			"languageNative": "half",
+			"languageRomanized": "half",
+			"partOfSpeech": "noun",
+			"coining": "unknown"
+		},
+		{
+			"commonspeak": "horse",
+			"keywords": [
+				"animal",
+				"mount",
+				"mammal",
+				"creature",
+			],
+			"definition": "A horse in Weskethian Commonspeak is slightly different than horses in Commonspeak, as they mean all 4-legged animals that you can ride on. This means   donkeys and mules are also “horses”. However horse may also refer to real horses if used in a sentence with donkeys and mules.",
+			"languageNative": "horse",
+			"languageRomanized": "horse",
+			"partOfSpeech": "noun",
+			"coining": "254"
+		}
+	]
+}

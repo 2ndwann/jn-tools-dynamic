@@ -1,0 +1,138 @@
+<html>
+<head>
+<%- include("./partials/_head"); %>
+
+</head>
+
+<body>
+<div class="container-fluid">
+	<%- include("./partials/_nav"); %>
+
+	<div class="container">
+		<div class="bg-light p-5 mb-3">
+			<h2>Dictionary</h2>
+			
+			<!-- Language info -->
+			<div id="language-info">
+				<h3 id="language-info-name"></h3>
+				<p id="language-info-desc"></p>
+			</div>
+			
+			<!-- Dictionary options -->
+			<div id="dictionary-options">
+				<strong>Dictionary options:</strong><br/>
+				<div class="d-flex flex-row bd-highlight mb-3">
+					<button type="button" class="btn" data-bs-toggle="collapse" data-bs-target="#admin-login">Admin login...</button>
+					<button class="btn" onclick="alert('To report a problem, please DM w_yu#0742 on Discord.');">Report a problem</button>
+				</div>
+				
+				<!-- Admin login -->
+				<div id="admin-login" class="collapse">
+					<form method="POST">
+						<h4>Admin login</h4>
+
+						<input type="text" class="form-control" name="username" placeholder="Username">
+						<input type="password" class="form-control" name="password" placeholder="Password">
+						
+						<input class="form-control" type="submit">
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Content -->
+		<div class="container form-group">
+			<form>
+				<div class="row" id="row-container">
+					<div class="col-sm-3 bg-light p-5 mb-3" id="language-selection-container">
+						<h3>Language</h3>
+					
+					
+					
+						<!-- Select the language -->
+						<label for="select-language">Click the dropdown below to select a language:</label>
+						<select class="form-control" name="language" id="select-language">
+							<option selected="true">- Select a language -</option>
+							<option id="Weskethian">Weskethian</option>
+							<option id="Vilden">Vilden</option>
+						</select>
+						
+						
+					</div>
+					
+					
+					<div class="col-sm-9 bg-light p-5 mb-3" id="definition-container">
+						<h3>Definition</h3>
+					
+						<div id="definition-search">
+							<input type="text" class="form-control" name="lookup" placeholder="Search for a specfic keyword. Leave blank for all documented words in language.">
+							<input type="submit" class="form-control">
+						</div>
+						
+						<!-- error popup -->
+						<div class="alert alert-danger" id="error">
+							<span id="error-text"></span>
+						</div>
+					
+						<!-- List -->
+						<div class="container p-1 m-1" id="definition-list">
+							<p id="table-supplementary-text">X documented definitions for Y.<br/>Showing Z definitions.</p>
+							<table class="table table-striped table-fixed table-hover" id="dictionary-table">
+								<thead>
+									<tr>
+										<th id="table-header-commonspeak">Commonspeak</th>
+										<th id="table-header-native">Native</th>
+										<th id="table-header-romanized">Romanized</th>
+										<th id="table-header-type">Type</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					
+					
+					
+						<!-- Expanded Definition-->
+						<div class="container pt-5 m-1" id="expanded-definition">
+							<button class="btn" id="expanded-definition-back-button">< <strong>Back</strong></button> <!-- for some reason this works on its own.. -->
+							
+							<div class="row">
+								<div class="col-sm-4">
+									<p id="expanded-definition-romanized" style="font-size:16px; margin-bottom:-2px; font-style:italic;" class="text-center">romanized</p>
+									<h3 id="expanded-definition-native" class="text-center">native</h3>
+									<button type="button" onclick="showInflections()" class="btn btn-link" id="show-inflections" style="font-size:13px;" disabled>Show inflections</button>
+									<button type="button" onclick="showInflections()" class="btn btn-link" id="show-collocations" style="font-size:13px;" disabled>Show collocations</button>
+								</div>
+								<div class="col-sm-8">
+									<div>
+										<p id="expanded-definition-part-of-speech" style="font-size:13px; font-weight:bold;"></p>
+										<p style="font-style:italic; font-size:13px; margin-top:-12px;">First attested use of word: <span id="expanded-definition-coining"></span></p>
+									</div>
+									<p id="expanded-definition-commonspeak" style="font-size:larger;">Commonspeak here..</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+<script>
+// Load the server variables into client
+<% if(typeof selectedLanguage !== "undefined") {%> // Selected language
+	const selectedLanguage = <%- JSON.stringify(selectedLanguage); %>
+<% } %>
+<% if(typeof lookup !== "undefined") {%> // Lookup
+	const lookup = <%- JSON.stringify(lookup); %>
+<% } %>
+<% if(typeof dictionary !== "undefined") {%> // Lookup
+	const dictionary = <%- JSON.stringify(dictionary); %>
+	console.log(dictionary);
+<% } %> 
+</script>
+<script src="static/js/dictionary.js"></script>
+<script src="static/js/transliterations/vildenRunic.js"></script>
+</div>
+</body>
+</html>

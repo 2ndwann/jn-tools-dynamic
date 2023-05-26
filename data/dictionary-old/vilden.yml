@@ -1,0 +1,509 @@
+name: Vilden
+description: Vilden is a language spoken by the Vilden People. It is written in an alphabet known as Vilden Runic, which was inspired by Dwarven Runic. An rarely-used alternative writing system exists, known as "Ancient Vilden". Variations of the language exist between those living in Ashlar and those living around Kurundor.
+
+writingSystems: 
+    - Commoncharacter
+    - Vilden Runic
+    - Ancient Vilden
+
+fallbackLanguages:
+    - English
+    - French
+    - Japanese
+    - Filipino
+
+writingSystemType: alphabetic
+commonCharacterCanBeUsedAsDefault: false
+transliterationLibraries:
+    -   path: /static/js/transliterations/vildenRunic.js
+        name: vildenRunic
+
+vocabulary:
+    -   keywords:
+                - the
+        
+        word:
+            native: ~
+            romanized: de
+            
+            alternativeForms:
+                native: ~
+                romanized:
+                        - duh
+        
+        definition: ~
+        
+        partOfSpeech: article
+        coining: ~
+        synonyms: ~
+        
+        
+    -   keywords:
+                - be
+            
+        word:
+            native: ~
+            romanized: ee
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: verb
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - to
+                
+            
+        word:
+            native: ~
+            romanized: ta
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: adverb
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - too
+            
+        word:
+            native: ~
+            romanized: taa
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: adverb
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - of
+            
+        word:
+            native: ~
+            romanized: uf
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: preposition
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - and
+            
+        word:
+            native: ~
+            romanized: end
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: conjunction
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - a
+            
+        word:
+            native: ~
+            romanized: a
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: article
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - in
+            
+        word:
+            native: ~
+            romanized: en
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: preposition
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - it
+            
+        word:
+            native: ~
+            romanized: et
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: pronoun
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - for
+            
+        word:
+            native: ~
+            romanized: fur
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: preposition
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - not
+            
+        word:
+            native: ~
+            romanized: nat
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: preposition
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - on
+            
+        word:
+            native: ~
+            romanized: on
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: preposition
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - with
+            
+        word:
+            native: ~
+            romanized: ith
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: preposition
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - he
+            
+        word:
+            native: ~
+            romanized: vu
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: male third person pronoun; him
+        
+        partOfSpeech: pronoun
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - as
+            
+        word:
+            native: ~
+            romanized: as
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: as
+        
+        partOfSpeech: adverb
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - you
+            
+        word:
+            native: ~
+            romanized: ooo
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: second person neutral pronoun; you
+        
+        partOfSpeech: pronoun
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - do
+            
+        word:
+            native: ~
+            romanized: do
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: to do, to commit, to act
+        
+        partOfSpeech: verb
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - at
+            
+        word:
+            native: ~
+            romanized: at
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: at
+        
+        partOfSpeech: preposition
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - this
+            
+        word:
+            native: ~
+            romanized: is
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: proximitive pronoun; this
+        
+        partOfSpeech: pronoun
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - but
+            
+        word:
+            native: ~
+            romanized: ut
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: conjunction
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - by
+            
+        word:
+            native: ~
+            romanized: biah
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: preposition
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - they
+            
+        word:
+            native: ~
+            romanized: ay
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: pronoun
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - we
+            
+        word:
+            native: ~
+            romanized: ee
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: pronoun
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - say
+            
+        word:
+            native: ~
+            romanized: zay
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: verb
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - or
+            
+        word:
+            native: ~
+            romanized: ur
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: conjunction
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - an
+            
+        word:
+            native: ~
+            romanized: an
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: article
+        coining: ~
+        synonyms: ~
+
+
+    -   keywords:
+                - will
+            
+        word:
+            native: ~
+            romanized: ill
+            
+            alternativeForms:
+                native: ~
+                romanized: ~
+        
+        definition: ~
+        
+        partOfSpeech: verb
+        coining: ~
+        synonyms: ~
+
+

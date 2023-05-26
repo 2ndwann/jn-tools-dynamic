@@ -1,0 +1,100 @@
+<html>
+<head>
+<%- include("./partials/_head"); %>
+
+</head>
+
+<body>
+<div class="container-fluid">
+	<%- include("./partials/_nav"); %>
+
+	<!-- Content -->
+	<div class="container">
+		<div class="bg-light p-5 mb-3">
+			<h2>Dictionary</h2>
+			
+			<!-- Search -->
+			<div class="container form-group">
+				<form method="GET">
+					<div class="row">
+						<!-- Language selection -->
+						<div class="col-sm-2">
+							<select class="form-control" name="language" id="select-language">
+								<option selected="selected">- Select a language -</option>
+								<!--<option>Weskethian</option>-->
+								<!--<option>Vilden</option>-->
+								<option>Proto-Minami</option>
+							</select>
+							<p id="result-count" class="search-results-show-only"></p>
+							<!-- error popup -->
+						</div>
+						<!-- Search box -->
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="lookup" name="lookup" placeholder="Search keyword"/>
+						</div>
+						<!-- Submit -->
+						<div class="col-sm-2">
+							<input class="form-control btn btn-primary" type="submit">
+						</div>
+					</div>
+				<form>
+			</div>
+		</div>
+		
+		<!-- Search results -->
+		<div class="bg-light p-5 mb-3 search-results-show-only">
+			<div class="container">
+				<div id="search-results">
+				</div>
+			</div>
+		</div>
+		
+		<div class="alert alert-danger" id="error">
+			<p></p>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+// Load the server variables into client
+<% if(typeof lookupSuccess !== "undefined") {%> // Lookup success
+	const lookupSuccess = <%- JSON.stringify(lookupSuccess); %>;
+<% } %>
+
+<% if(typeof results !== "undefined") {%> // Results
+	const results = <%- JSON.stringify(results); %>;
+<% } %>
+
+<% if(typeof lookup !== "undefined") {%> // Results
+	const lookup = <%- JSON.stringify(lookup); %>;
+<% } %>
+
+<% if(typeof language !== "undefined") {%> // Results
+	const language = <%- JSON.stringify(language); %>;
+<% } %>
+</script>
+<script src="static/js/dictionary.js"></script> <!-- Dictionary client script -->
+</html>
+
+<!-- Search result entry TEMPLATE -->
+<div class="row mb-5 pb-5 search-results-show-only" id="search-result-entry-template" style="border-bottom:1px solid black;">
+	<!-- Word -->
+	<div class="col-sm-4 word mb-1 pb-1">
+		<h3 class="native" class="text-center">native</h3>
+		<!--<strong style="margin-top: 15px;">Transcriptions</strong><br/>-->
+		<!-- TODO ADD TRANSCRIPTIONS -->
+		<!--
+		<button type="button" onclick="showInflections()" class="btn btn-link" id="show-inflections" style="font-size:13px;" disabled>Show inflections</button>
+		<button type="button" onclick="showInflections()" class="btn btn-link" id="show-collocations" style="font-size:13px;" disabled>Show collocations</button>
+		-->
+	</div>
+	
+	<!-- Senses -->
+	<div class="col-sm-8 senses">
+	</div>
+</div>
+
+<!-- Sense entry TEMPLATE -->
+<div id="sense-entry-template" class="mb-2 pb-2 search-results-show-only">
+	<!--SENSE-->
+</div>

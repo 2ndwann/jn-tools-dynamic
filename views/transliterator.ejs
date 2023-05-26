@@ -1,0 +1,58 @@
+<html>
+<head>
+<%- include("./partials/_head"); %>
+</head>
+
+<body>
+
+<div class="container-fluid">
+	<%- include("./partials/_nav"); %>
+	
+	<div class="alert alert-info w-50">
+		<strong>Note:</strong> This is not the translator. I will add the translator soon, but this tool can help in transliterating documents into native writing.
+		<button class="btn btn-link" onclick="$(this).parent().remove();">Dismiss</button>
+	</div>
+	
+	<div class="container">
+		<div class="bg-light p-5 mb-3">
+			<h2>Transliterator</h2>
+			<p>Directly transliterates between Latin characters and the alphabetic/syllabic scripts used in Jehvnar. <i>More scripts will be added soon.</i></p>
+			<div class="row">
+				<div class="col-sm-6">
+					<select class="form-control" id="select">
+						<option value="vilden" name="vilden" selected="true">Vilden</option>
+						<option value="romanized" name="romanized">Romanized</option>
+					</select>
+					<button class="btn btn-primary w-100" id="submit">Transliterate!</button>
+					<textarea class="form-control" placeholder="Enter romanized text here" rows="15" id="input-text"></textarea>
+				</div>
+				<div class="col-sm-6">
+					<textarea class="form-control" placeholder="Output text" rows="15" id="output-text"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+<!-- Import transliteration libraries -->
+<script src="/static/js/transliterations/vildenRunic.js"></script>
+<script src="/static/js/transliterations/romanized.js"></script>
+<script>
+
+let refresh = () => {
+	// Get selected writing system then refresh text
+	if ($('#select').find(":selected").val() == 'vilden') {
+		$('#output-text').val(transliterateToVildenRunic($('#input-text').val()));
+		$('#input-text').attr('placeholder', 'Enter romanized text here');
+	} else if ($('#select').find(":selected").val() == 'romanized') {
+		$('#output-text').val(transliterateToRomanized($('#input-text').val()));
+		$('#input-text').attr('placeholder', 'Enter native text here');
+	}
+}
+
+// When input text changes
+$('#submit').click(() => { refresh(); }); // When input is submitted
+$('#select').change(() => { refresh(); }); // When the selection dropdown changes
+</script>
